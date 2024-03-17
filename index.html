@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            background-color: #000000;
+        }
+
+        .btn{
+            padding: 4px 20px;
+            border-radius: 50px;
+            border: none;
+            background-color: #ede500;
+            color: rgb(0, 0, 0);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 10px;
+        }
+
+        .btn:hover{
+            color: #ede500;
+            background-color: rgb(0, 0, 0);
+            transition: all 0.2s ease-out;
+            border: 1px solid #ede500;
+            cursor: pointer;
+        }
+
+       
+        h1{
+            color: #ede500;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LocalStorage & JSON</h1>
+    <div class="box">
+        <button class="btn btn1">Add Data to Local Storage</button>
+        <button class="btn btn2">Get Data from Local Storage</button>
+        <button class="btn btn3">Delete Data from Local Storage</button>
+    </div>
+
+    <script>
+
+        const info = {
+            "First Name" : "Fardin",
+            "Middle Name" : "Samsher",
+            "Surname" : "Pathan"
+        };
+
+        
+        let btn = document.querySelector('.btn');
+        let btnOne = document.querySelector('.btn1');
+        let btnTwo = document.querySelector('.btn2');
+        let btnThree = document.querySelector('.btn3');
+
+        btnOne.addEventListener('click', () => {
+            localStorage.setItem("information", JSON.stringify(info));
+            alert("Data Added to Local Storage Successfully");
+        });
+
+        btnTwo.addEventListener('click', () => {
+            let x = localStorage.getItem("information");
+            console.log(JSON.parse(x));
+            alert("Data Got from Local Storage Successfully");
+        })
+
+        btnThree.addEventListener('click', () => {
+            localStorage.removeItem("information");
+            alert("Data Removed from Local Storage Successfully");
+        })
+      
+
+
+    </script>
+</body>
+</html>
